@@ -41,7 +41,7 @@ class PostController < ApplicationController
     post = Post.find(@id)
     if post
       post.delete
-      render json: 'User was successfully destroyed.', status: :ok
+      render json: 'Post was successfully destroyed.', status: :ok
     else
       render json:  post.errors, status: :not_found
     end
