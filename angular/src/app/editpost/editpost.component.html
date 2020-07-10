@@ -1,0 +1,39 @@
+
+<div class="container">
+    <div class="alert alert-success" *ngIf="showMsgS">
+      <p> {{notic}}</p>
+    </div>
+      <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">
+              <div class="card" style="margin-top: 35px;">
+                  <div class="card-header bg-dark text-center " style="color: white;">
+                    <strong>Edit </strong> {{post.title}}
+                  </div>
+                  <div class="card-body">
+                    <div class="alert alert-danger" *ngIf="showMsgE">
+                      <ul *ngFor="let error of errorpost;">
+                        <li>{{ error }}</li>
+                      </ul>
+                  </div>
+                      <form action=""  > <!--(ngSubmit) = "insertPost()"-->
+                          <div class="form-group">
+                              <label >Title *</label>
+                              <input class="form-control" type="text" name="title"  [(ngModel)]="title" placeholder="Enter title.." required>
+                            </div>
+                            <div class="form-group">
+                              <label >Category *</label>
+                              <input class="form-control" type="text" name="category"  [(ngModel)]="category" placeholder="Enter category..">
+                            </div> 
+                            <div class="text-center">
+                            <button type="submit" class="btn btn-dark" (click) = "updatetPost()">Update </button>   
+                          </div>
+                      </form>
+                  </div>
+                </div>
+          </div>
+          <div class="col-3"></div>
+      </div>
+      
+      
+  </div>
