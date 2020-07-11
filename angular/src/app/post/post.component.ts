@@ -10,12 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 export class PostComponent implements OnInit {
   posts;
   loading = true;
+  nothing = false;
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.apiService.getPosts().subscribe((data) => {
-      this.posts = data;
-      this.loading = false;
+      if (!data.empty){
+        this.posts = data;
+        this.loading = false;
+      }else{
+        this.loading = false;
+        this.nothing = true;
+      }
     });
   }
   fetchdata(): void{

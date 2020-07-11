@@ -18,6 +18,9 @@
         <span class="sr-only">Loading...</span>
       </div>
     </div>
+    <div style="margin-left: 268%;" *ngIf="nothing">
+      <p style="padding: 6px;"> Nothing to show</p>
+    </div>
 
     <tr *ngFor="let post of posts;let indexOfelement=index;">
       <th scope="row">{{indexOfelement+1}}</th>

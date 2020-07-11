@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
-
+import {MessagesService} from '../messages.service';
 
 @Component({
   selector: 'app-createpost',
@@ -24,7 +24,7 @@ export class CreatepostComponent implements OnInit {
   };
   errorpost: Array <any> = [];
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private messages: MessagesService) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +41,8 @@ export class CreatepostComponent implements OnInit {
           this.notic = 'Your adding post -- ' + data.title + '-- Successfly ';
           this.title = '';
           this.category = '';
+          this.messages.sendNotice(this.notic);
+          this.router.navigate(['/post/'+ data.id]) ;
         },
         error: error => {
           this.showMsgE = true;
